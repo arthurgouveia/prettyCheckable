@@ -59,7 +59,10 @@
 
       });
 
-      $('div.prettycheckbox a, div.prettyradio a').on('keypress', function(){ $(this).click(); });
+      $('div.prettycheckbox a, div.prettyradio a').on('keypress', function(e){ 
+        $(this).click();
+        e.preventDefault();
+      });
 
     }
 
