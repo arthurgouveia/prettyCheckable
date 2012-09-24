@@ -5,7 +5,17 @@ $().ready(function(){
   });
 
   $('input[name=colors]').on('change', function(){
-    $('div#other-colors').slideToggle();
+
+    if ($('input[name=colors]').val('yes')) {
+
+      $('div#other-colors').slideDown();
+
+    } else {
+
+      $('div#other-colors').slideUp();
+
+    }
+
   });
 
   var jasmineEnv = jasmine.getEnv();
