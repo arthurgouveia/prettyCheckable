@@ -32,6 +32,11 @@ $().ready(function(){
     jasmineEnv.execute();
   }
 
+  //preparing inputs for the Jasmine tests
+  $('div#jasmine').on('show', function(){
+    $('input#Test1, input#Test2').removeAttr('checked').parent().find('a').removeClass('checked');
+  });
+
   $('div#jasmine').on('shown', function(){
     execJasmine();
   });
