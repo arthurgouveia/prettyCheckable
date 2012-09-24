@@ -6,7 +6,7 @@ $().ready(function(){
 
   $('input[name=colors]').on('change', function(){
 
-    if ($('input[name=colors]').val() === 'yes') {
+    if ($(this).val() === 'yes') {
 
       $('div#other-colors').slideDown();
 
