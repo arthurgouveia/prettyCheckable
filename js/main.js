@@ -33,8 +33,7 @@ $().ready(function(){
     if (currentWindowOnload) {
       currentWindowOnload();
     }
-
-    execJasmine();
+     setTimeout(function() {execJasmine();}, 5000);
   };
 
   function execJasmine() {
