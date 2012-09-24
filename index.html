@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>jQuery prettyCheckable</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="jQuery plugin to replace checkboxes and radios for custom images">
+    <meta name="author" content="Arthur Gouveia">
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="js/prettyCheckable/prettyCheckable.css">
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <link rel="stylesheet" href="http://google-code-prettify.googlecode.com/svn/trunk/src/prettify.css">
+    <script type="text/javascript" src="http://google-code-prettify.googlecode.com/svn/trunk/src/prettify.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="js/jasmine/lib/jasmine-1.2.0/jasmine.css">
+    <script type="text/javascript" src="js/jasmine/lib/jasmine-1.2.0/jasmine.js"></script>
+    <script type="text/javascript" src="js/jasmine/lib/jasmine-1.2.0/jasmine-html.js"></script>
+
+    <script type="text/javascript" src="tests/checkable.js"></script>
+
+  </head>
+
+  <body onload="prettyPrint()">
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="#">jQuery prettyCheckable</a>
+
+          <ul class="nav pull-right">
+            <li><a href="#jasmine" data-toggle="modal">Jasmine tests</a></li>
+            <li><a href="#thanks" data-toggle="modal">Special thanks</a></li>
+          </ul>
+          
+        </div>
+      </div>
+    </div>
+
+    <div class="main container">
+
+      <div class="row">
+
+        <div class="span6">
+
+          <h3>What does it do?</h3>
+
+          <p>This plugin replaces the default checkboxes and radio inputs for better looking ones.</p>
+
+          <p>Features:
+            <ul>
+              <li>Custom design, kindly provided by <a href="http://ilustrebob.com.br/" target="_blank">Bruno O. Barros</a>;</li>
+              <li>Four color options (Twitter bootstrap) + editable PSD;</li>
+              <li>Better look & size;</li>
+              <li>Super easy implementation;</li>
+              <li>Selectable with Tab and checkable with keyboard;</li>
+              <li>Change events &amp; Chainning preserved;</li>
+              <li>More area of click/touch. A plus for mobile devices;</li>
+            </ul>
+          </p>
+
+          <div class="modal hide fade" id="thanks" tabindex="-1" role="dialog"  aria-hidden="true">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+              <h3>Peeps I'd like to thank</h3>
+            </div>
+            <div class="modal-body">
+              
+              <div class="clearfix">
+                
+                <div class="pull-left avatar">
+                  <img src="https://si0.twimg.com/profile_images/1596994511/image_normal.jpg" alt="Bruno O. Barros">
+                </div>
+                
+                <div class="pull-left info">
+                  <strong>Bruno O. Barros</strong> - <a href="http://twitter.com/IlustreBOB" target="_blank">@IlustreBOB</a><br/>
+                  Kindly helped me by designing these awesome checkables.
+                </div>
+                
+
+              </div>
+
+              <div class="clearfix">
+
+                <div class="pull-left avatar">
+                  <img src="https://si0.twimg.com/profile_images/1148153063/59f9efe4d39b8b3af6046d980cd1bf0c_normal.png" alt="Cedric Dugas">
+                </div>
+
+                <div class="pull-left info">
+                  <strong>Cedric Dugas</strong> - <a href="http://twitter.com/PosAbsolute" target="_blank">@PosAbsolute</a><br/>
+                  First code review/adjustments and suggestion to use <a href="http://jqueryboilerplate.com/" target="_blank">jQuery Boilerplate</a>.
+                </div>
+
+              </div>
+
+              <div class="clearfix">
+
+                <div class="pull-left avatar">
+                  <img src="https://si0.twimg.com/profile_images/2460021933/a6n7byre2t1sb034ciol_normal.jpeg" alt="Christian Joudrey">
+                </div>
+
+                <div class="pull-left info">
+                  <strong>Christian Joudrey</strong> - <a href="http://twitter.com/cjoudrey" target="_blank">@cjoudrey</a><br/>
+                  Code review and opening my eyes to key features I should not ignore if I wanted to overwrite default behavior.
+                </div>
+
+              </div>
+
+            </div>
+            <div class="modal-footer">
+              <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+            </div>
+          </div>
+
+          <div class="modal hide fade" id="jasmine" tabindex="-1" role="dialog"  aria-hidden="true">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+              <h3>Jasmine tests results:</h3>
+            </div>
+            <div class="modal-body" id="jasmineTests">
+            </div>
+            <div class="modal-footer">
+              <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+            </div>
+          </div>
+          
+        </div>
+
+        <div class="span6">
+
+          <h3>Example</h3>
+
+          <div class="well">
+
+            <div class="input-wrapper">
+              <input type="checkbox" class="prettyCheckable" value="1" id="Test1" name="Test1" data-label="Right positioned label (no param)" />
+            </div>
+
+            <div class="input-wrapper">
+              <input type="checkbox" class="prettyCheckable" value="2" id="Test2" name="Test2" data-label='data-labelPosition="left"' data-labelPosition="left" />
+            </div>
+
+            <div class="input-wrapper">
+              <label>Radios!</label>
+              <input type="radio" class="prettyCheckable" value="1" id="Test3_0" name="Test3" data-label="Yes" checked data-customclass="margin-right"/>
+              <input type="radio" class="prettyCheckable" value="2" id="Test3_1" name="Test3" data-label="No" />
+            </div>
+
+            <div class="input-wrapper">
+              <label>Would you like to see other colors?</label>
+              <input type="radio" class="prettyCheckable" value="yes" name="colors" data-label="Yes" data-customclass="margin-right"/>
+              <input type="radio" class="prettyCheckable" value="no" name="colors" data-label="No" checked/>
+            </div>
+
+            <div id="other-colors" class="hide">
+
+              <div class="input-wrapper">
+                
+                <div class="input-wrapper">
+                  <input type="checkbox" class="prettyCheckable" value="1" id="color1" checked name="color1" data-label="Default (no-param)" />
+                </div>
+
+                <div class="input-wrapper">
+                  <input type="checkbox" class="prettyCheckable" value="1" id="color2" checked name="color2" data-label='data-color="green"' data-color="green" />
+                </div>
+
+                <div class="input-wrapper">
+                  <input type="checkbox" class="prettyCheckable" value="1" id="color3" checked name="color3" data-label='data-color="red"' data-color="red" />
+                </div>
+
+                <div class="input-wrapper">
+                  <input type="checkbox" class="prettyCheckable" value="1" id="color4" checked name="color4" data-label='data-color="yellow"' data-color="yellow" />
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="row">
+
+        <div class="span12">
+
+          <h3>Install &amp; Setup</h3>
+
+          <p><a href="#">Download the files</a> and include jQuery and prettyCheckable files:</p>
+
+          <pre class="prettyprint lang-html">
+&lt;link rel=&quot;stylesheet&quot; href=&quot;js/prettyCheckable/prettyCheckable.css&quot;&gt;
+
+&lt;script src=&quot;//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;js/prettyCheckable/prettyCheckable.js&quot;&gt;&lt;/script&gt;
+</pre>
+
+          <p>Write your inputs and add a class for the jQuery selector:</p>
+
+          <pre class="prettyprint lang-html">
+&lt;input type=&quot;checkbox&quot; class=&quot;myClass&quot; value=&quot;yes&quot; id=&quot;answer&quot; name=&quot;answer&quot;/&gt;
+</pre>
+
+          <p>Setup prettyCheckable for your inputs and you're all set:</p>
+
+          <pre class="prettyprint lang-js">
+$().ready(function(){
+
+  $('input.myClass').prettyCheckable();
+
+});
+</pre>
+
+          <p>You can start the plugin with the options you see on the documentation bellow and they will be applied to all matching inputs:</p>
+
+          <pre class="prettyprint lang-js">
+$().ready(function(){
+
+  $('input.myClass').prettyCheckable({
+    color: 'red'
+  });
+
+});
+</pre>
+
+          <p>If you want to apply something to all the inputs but you need a few specific ones to be different, you can add the specifics inline:</p>
+
+          <pre class="prettyprint lang-html">
+&lt;input type=&quot;checkbox&quot; class=&quot;myClass&quot; value=&quot;yes&quot; id=&quot;answer&quot; name=&quot;answer&quot; data-color=&quot;green&quot; /&gt;
+</pre>
+
+          <h3>Documentation</h3>
+
+          <p><em>None of the parameters is mandatory.</em></p>
+
+          <ul class="nav nav-tabs" id="documentation">
+            <li class="active"><a href="#options" data-toggle="tab">Options</a></li>
+            <li><a href="#inline-options" data-toggle="tab">Inline Options</a></li>
+          </ul>
+
+          <div class="tab-content">
+            <div class="tab-pane active" id="options">
+
+              <table class="table table-striped">
+                <tr>
+                  <td class="param-name">Name</td>
+                  <td class="param-values">Values</td>
+                  <td>Description</td>
+                </tr>
+                <tr>
+                  <td class="param-name">
+                    <strong>labelPosition</strong>
+                  </td>
+                  <td class="param-values">
+                    string<br/>
+                    <em>left, right(default)</em>
+                  </td>
+                  <td>
+                    <p>This is the position where the label for the inputs should be placed, if informed.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="param-name">
+                    <strong>customClass</strong>
+                  </td>
+                  <td class="param-values">
+                    string<br/>
+                    <em>A class name.</em>
+                  </td>
+                  <td>
+                    <p>This will add a class you want to the wrapping div surrounding the input, created by the plugin.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="param-name">
+                    <strong>color</strong>
+                  </td>
+                  <td class="param-values">
+                    string<br/>
+                    <em>blue(default), green, yellow or red</em>
+                  </td>
+                  <td>
+                    <p>Choose between one of the four colors options.</p>
+                  </td>
+                </tr>
+              </table>
+
+            </div>
+            <div class="tab-pane" id="inline-options">
+
+              <p><em>All inline configs will overwrite the ones you initialized the plugin with.</em></p>
+
+              <table class="table table-striped">
+                <tr>
+                  <td>Name</td>
+                  <td>Values</td>
+                  <td>Description</td>
+                </tr>
+                <tr>
+                  <td class="param-name">
+                    <strong>data-label</strong>
+                  </td>
+                  <td class="param-values">
+                    string<br/>
+                    <em>Text for your label</em>
+                  </td>
+                  <td>
+                    <p>If informed, this will create a label attached to the input.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="param-name">
+                    <strong>data-labelPosition</strong>
+                  </td>
+                  <td class="param-values">
+                    string<br/>
+                    <em>left, right(default)</em>
+                  </td>
+                  <td>
+                    <p>This is the position where the label for the inputs should be placed, if informed.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="param-name">
+                    <strong>data-customClass</strong>
+                  </td>
+                  <td class="param-values">
+                    string<br/>
+                    <em>A class name.</em>
+                  </td>
+                  <td>
+                    <p>This will add a class you want to the wrapping div surrounding the input, created by the plugin.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="param-name">
+                    <strong>data-color</strong>
+                  </td>
+                  <td class="param-values">
+                    string<br/>
+                    <em>blue(default), green, yellow or red</em>
+                  </td>
+                  <td>
+                    <p>Choose between one of the four colors options.</p>
+                  </td>
+                </tr>
+              </table>
+
+            </div>
+          </div>
+
+          <h3>Customization</h3>
+
+          <p>If you want to create your own designed checkboxes or you just need a different color set, download the <a href="/goodies/prettyCheckable.js">prettyCheckable PSD</a>, do whatever you need to, add the entries to your CSS and pass the name of your color/style in the <strong>color</strong> or <strong>customClass</strong> parameters, according to the CSS code you can see on <a href="/js/prettyCheckable.css">prettyCheckable.css</a></p>
+
+        </div>
+
+      </div>
+
+      
+
+      <hr>
+
+      <a href="https://github.com/arthurgouveia"><img style="position: absolute; top: 40px; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png" alt="Fork me on GitHub"></a>
+
+      <footer>
+        <p class="pull-left">
+          &copy; 2012 - Arthur Gouveia | <a href="http://arthurgouveia.com" target="_blank">arthurgouveia.com</a>
+        </p>
+        <p class="pull-right">
+          Available under the <a href="http://opensource.org/licenses/mit-license.php">MIT License</a>
+        </p>
+      </footer>
+
+    </div>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/prettyCheckable/jquery-1.8.1.min.js"><\/script>')</script>
+
+    <script src="js/bootstrap-transition.js"></script>
+    <script src="js/bootstrap-modal.js"></script>
+    <script src="js/bootstrap-tab.js"></script>
+    <script src="js/prettyCheckable/prettyCheckable.js"></script>
+    <script src="js/main.js"></script>
+
+    <script>
+        var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+        (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+        g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+        s.parentNode.insertBefore(g,s)}(document,'script'));
+    </script>
+
+  </body>
+</html>

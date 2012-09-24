@@ -1,0 +1,31 @@
+label {
+    display: block;
+    margin: 0 0 10px 5px;
+}
+
+.main {
+    padding-top: 60px;
+}
+
+.input-wrapper {
+    margin-bottom: 15px;
+}
+
+.prettycheckbox.margin-right,
+.prettyradio.margin-right { margin-right: 15px; }
+
+.avatar {
+  width: 48px;
+  padding: 5px;
+  margin:0 10px 10px 0;
+  background-color: #F7F7F9;
+  border: 1px solid #E1E1E8;
+  -webkit-box-shadow: inset 40px 0 0 #FBFBFC, inset 41px 0 0 #ECECF0;
+  -moz-box-shadow: inset 40px 0 0 #fbfbfc, inset 41px 0 0 #ececf0;
+  box-shadow: inset 40px 0 0 #FBFBFC, inset 41px 0 0 #ECECF0;
+}
+
+.info {width: 430px;}
+
+.param-name {width:180px;}
+.param-values {width:240px;}
