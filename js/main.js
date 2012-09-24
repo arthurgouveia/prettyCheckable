@@ -28,16 +28,12 @@ $().ready(function(){
     return htmlReporter.specFilter(spec);
   };
 
-  var currentWindowOnload = window.onload;
-  window.onload = function() {
-    if (currentWindowOnload) {
-      currentWindowOnload();
-    }
-     setTimeout(function() {execJasmine();}, 5000);
-  };
-
   function execJasmine() {
     jasmineEnv.execute();
   }
+
+  $('div#jasmine').on('shown', function(){
+    execJasmine();
+  });
 
 });
