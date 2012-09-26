@@ -76,7 +76,7 @@
 
       var label = el.data('label') !== undefined ? el.data('label') : '';
 
-      var labelPosition = el.data('labelposition') !== undefined ? 'label' + el.data('labelposition') : 'label' + this.options.labelPosition;
+      var labelPosition = el.data('labelposition') !== undefined ? 'label' + el.data('labelposition') : this.options.labelPosition;
 
       var customClass = el.data('customclass') !== undefined ? el.data('customclass') : this.options.customClass;
 
