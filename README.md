@@ -15,7 +15,7 @@ This plugin replaces the default checkboxes and radio inputs for better looking 
 
 ##Install & Setup
 
-[Download the files](https://github.com/downloads/arthurgouveia/prettyCheckable/prettyCheckable-1.0.2.zip) (or [fork it](https://github.com/arthurgouveia/prettyCheckable)) and include jQuery and prettyCheckable files:
+[Download the files](https://github.com/arthurgouveia/prettyCheckable/zipball/master) (or [fork it](https://github.com/arthurgouveia/prettyCheckable)) and include jQuery and prettyCheckable files:
 
     <link rel="stylesheet" href="js/prettyCheckable/prettyCheckable.css">
 
