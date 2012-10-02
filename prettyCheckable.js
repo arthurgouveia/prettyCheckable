@@ -27,9 +27,7 @@
 
     function loadCheckBoxEvents(){
 
-      var hitEvent = 'ontouchstart' in document.documentElement ? 'touchstart' : 'click';
-
-      $('div.prettycheckbox a, div.prettyradio a, div.prettycheckbox label, div.prettyradio label').on(hitEvent, function(e){
+      $('div.prettycheckbox a, div.prettyradio a, div.prettycheckbox label, div.prettyradio label').on('touchstart click', function(e){
 
         e.preventDefault();
 
