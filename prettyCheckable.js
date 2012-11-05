@@ -39,7 +39,7 @@
 
         if (input.attr('type') == 'radio') {
 
-          $('input[name=' + input.attr('name') + ']').each(function(index, el){
+          $('input[name="' + input.attr('name') + '"]').each(function(index, el){
             $(el).removeAttr('checked').parent().find('a').removeClass('checked');
           });
 
@@ -59,7 +59,7 @@
 
       });
 
-      $('div.prettycheckbox a, div.prettyradio a').on('keypress', function(e){ 
+      $('div.prettycheckbox a, div.prettyradio a').on('keypress', function(e){
         $(this).click();
         e.preventDefault();
       });
