@@ -25,9 +25,9 @@
       this.init();
     }
 
-    function loadCheckBoxEvents(){
+    function addCheckableEvents(element){
 
-      $('div.prettycheckbox a, div.prettyradio a, div.prettycheckbox label, div.prettyradio label').on('touchstart click', function(e){
+      element.find('a, label').on('touchstart click', function(e){
 
         e.preventDefault();
 
@@ -66,7 +66,7 @@
 
     Plugin.prototype.init = function () {
 
-      el = $(this.element);
+      var el = $(this.element);
 
       el.css('display', 'none');
 
@@ -100,6 +100,7 @@
       }
 
       el.parent().append(dom.join('\n'));
+      addCheckableEvents(el.parent());
 
     };
 
@@ -109,7 +110,6 @@
           $.data(this, 'plugin_' + pluginName, new Plugin( this, options ));
         }
       });
-      loadCheckBoxEvents();
       return this;
     };
 
