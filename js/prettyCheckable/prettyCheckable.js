@@ -25,11 +25,9 @@
       this.init();
     }
 
-    function loadCheckBoxEvents(){
+    function addCheckableEvents(element){
 
-      var hitEvent = 'ontouchstart' in document.documentElement ? 'touchstart' : 'click';
-
-      $('div.prettycheckbox a, div.prettyradio a, div.prettycheckbox label, div.prettyradio label').on(hitEvent, function(e){
+      element.find('a, label').on('touchstart click', function(e){
 
         e.preventDefault();
 
@@ -39,7 +37,7 @@
 
         if (input.attr('type') == 'radio') {
 
-          $('input[name=' + input.attr('name') + ']').each(function(index, el){
+          $('input[name="' + input.attr('name') + '"]').each(function(index, el){
             $(el).removeAttr('checked').parent().find('a').removeClass('checked');
           });
 
@@ -47,7 +45,7 @@
 
         if (input.attr('checked') !== undefined) {
 
-          input.removeAttr('checked');
+          input.removeAttr('checked').change();
 
         } else {
 
@@ -59,7 +57,7 @@
 
       });
 
-      $('div.prettycheckbox a, div.prettyradio a').on('keypress', function(e){ 
+      $('div.prettycheckbox a, div.prettyradio a').on('keypress', function(e){
         $(this).click();
         e.preventDefault();
       });
@@ -68,7 +66,7 @@
 
     Plugin.prototype.init = function () {
 
-      el = $(this.element);
+      var el = $(this.element);
 
       el.css('display', 'none');
 
@@ -102,6 +100,7 @@
       }
 
       el.parent().append(dom.join('\n'));
+      addCheckableEvents(el.parent());
 
     };
 
@@ -111,7 +110,6 @@
           $.data(this, 'plugin_' + pluginName, new Plugin( this, options ));
         }
       });
-      loadCheckBoxEvents();
       return this;
     };
 
