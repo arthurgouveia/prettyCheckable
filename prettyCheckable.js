@@ -45,7 +45,7 @@
 
         if (input.attr('checked') !== undefined) {
 
-          input.removeAttr('checked');
+          input.removeAttr('checked').change();
 
         } else {
 
