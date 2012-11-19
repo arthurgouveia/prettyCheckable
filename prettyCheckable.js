@@ -57,9 +57,14 @@
 
       });
 
-      $('div.prettycheckbox a, div.prettyradio a').on('keypress', function(e){
-        $(this).click();
-        e.preventDefault();
+      element.find('a').on('keyup', function(e){
+
+        if (e.keyCode === 32) {
+
+          $(this).click();
+
+        }
+
       });
 
     }
