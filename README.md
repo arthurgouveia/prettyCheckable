@@ -1,6 +1,7 @@
 #What does it do?
 
-This plugin replaces the default checkboxes and radio inputs for better looking ones. [Check the landing page](http://arthurgouveia.com/prettyCheckable/).
+This plugin replaces the default checkboxes and radio inputs for better looking ones. 
+Check the [landing page](http://arthurgouveia.com/prettyCheckable/) for a demo.
 
 ##Features:
 
