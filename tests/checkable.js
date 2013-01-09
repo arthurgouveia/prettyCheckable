@@ -47,3 +47,28 @@ describe('toggleCheckedForRadios', function(){
 
 });
 
+describe('triggerChangeEvent', function(){
+
+  it('should trigger change events on the checkboxes/radios', function(){
+
+    var radio1 = $('input[name=Test3]:checked');
+    var checked = radio1.parent().find('a');
+
+    var radio2 = $('input[name=Test3]:not(:checked)');
+    var notChecked = radio2.parent().find('a');
+
+    radio1.hasChanged = false;
+    radio2.hasChanged = false;
+
+    radio1.on('change', function(){ radio1.hasChanged = true; });
+    radio2.on('change', function(){ radio2.hasChanged = true; });
+
+    checked.click();
+    notChecked.click();
+
+    expect(radio1.hasChanged).toEqual(true);
+    expect(radio2.hasChanged).toEqual(true);
+
+  });
+
+});
