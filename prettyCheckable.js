@@ -43,9 +43,9 @@
         }
 
         if (input.prop('checked')) {
-            input.prop('checked', false);
+            input.prop('checked', false).change();
         } else {
-            input.prop('checked', true);
+            input.prop('checked', true).change();
         }
 
         fakeCheckable.toggleClass('checked');
