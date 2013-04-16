@@ -6,7 +6,7 @@ describe('checkOnLabelClick', function(){
 
     var input = $('input#Test1');
 
-    expect(input.attr('checked')).toEqual('checked');
+    expect(input.prop('checked')).toEqual(true);
     expect(input.parent().find('a').hasClass('checked')).toEqual(true);
 
   });
@@ -21,7 +21,7 @@ describe('checkOnFakeInputClick', function(){
 
     input.parent().find('a').click();
 
-    expect(input.attr('checked')).toEqual('checked');
+    expect(input.prop('checked')).toEqual(true);
     expect(input.parent().find('a').hasClass('checked')).toEqual(true);
 
   });
@@ -39,9 +39,9 @@ describe('toggleCheckedForRadios', function(){
     notChecked.click();
 
     expect(notChecked.hasClass('checked')).toEqual(true);
-    expect(notChecked.parent().find('input').attr('checked')).toEqual('checked');
+    expect(notChecked.parent().find('input').prop('checked')).toEqual(true);
     expect(checked.hasClass('checked')).toEqual(false);
-    expect(checked.parent().find('input').attr('checked')).toEqual(undefined);
+    expect(checked.parent().find('input').prop('checked')).toEqual(false);
 
   });
 
