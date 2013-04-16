@@ -36,16 +36,23 @@
         var fakeCheckable = clickedParent.find('a');
 
         if (input.prop('type') == 'radio') {
+
           $('input[name="' + input.attr('name') + '"]').each(function(index, el){
+
             $(el).prop('checked', false).parent().find('a').removeClass('checked');
+
           });
 
         }
 
         if (input.prop('checked')) {
+
             input.prop('checked', false).change();
+
         } else {
+
             input.prop('checked', true).change();
+
         }
 
         fakeCheckable.toggleClass('checked');
@@ -83,7 +90,7 @@
       var containerClasses = ['pretty' + classType, labelPosition, customClass, color].join(' ');
 
       el.wrap('<div class="clearfix ' + containerClasses + '"></div>').parent().html();
-      
+
       var dom = [];
       var isChecked = el.prop('checked') ? 'checked' : '';
 
