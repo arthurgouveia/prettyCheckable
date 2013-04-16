@@ -162,6 +162,34 @@ If you want to apply something to all the inputs but you need a few specific one
   </tbody>
 </table>
 
+###Methods
+
+<p><em>The plugin returns an array of Plugin instances. Once you found the object you're looking for, simply call one of theses puppies. Check main.js, which I used to build the examples you see in here for more details.</em></p>
+
+<table class="table table-striped">
+  <tr>
+    <td>Name</td>
+    <td>Description</td>
+  </tr>
+  <tr>
+    <td class="param-name">
+      <strong>.enableInput()</strong>
+    </td>
+    
+    <td>
+      <p>Um... well... it enables the input.</p>
+    </td>
+  </tr>
+  <tr>
+    <td class="param-name">
+      <strong>.disableInput()</strong>
+    </td>
+    <td>
+      <p>If you can't figure this one out, I'm not sure you should be even reading this.</p>
+    </td>
+  </tr>
+</table>
+
 ##Customization
 
 If you want to create your own designed checkboxes or you just need a different color set, download the [prettyCheckable PSD](http://arthurgouveia.com/prettyCheckable/goodies/prettyCheckable.psd), do whatever you need to, add the entries to your CSS and pass the name of your color/style in the color or customClass parameters, according to the CSS code you can see on [prettyCheckable.css](http://arthurgouveia.com/prettyCheckable/js/prettyCheckable/prettyCheckable.css).
