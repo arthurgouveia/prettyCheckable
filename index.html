@@ -190,6 +190,16 @@
             </div>
 
             <div class="input-wrapper">
+              <input type="checkbox" class="prettyCheckable" value="3" id="TestDisabled" name="TestDisabled" disabled data-label='Existing "disabled" attribute'>
+            </div>
+
+            <div class="input-wrapper">
+              <label>Enable the checkbox above?</label>
+              <input type="radio" class="prettyCheckable" value="yes" name="disabledTrigger" data-label="Yes, please." data-customclass="margin-right"/>
+              <input type="radio" class="prettyCheckable" value="no" name="disabledTrigger" data-label="Meh." checked/>
+            </div>
+
+            <div class="input-wrapper">
               <input type="checkbox" class="prettyCheckable" value="2" id="Test2" name="Test2" data-label='data-labelPosition="left"' data-labelPosition="left" />
             </div>
 
@@ -291,6 +301,7 @@ $().ready(function(){
           <ul class="nav nav-tabs" id="documentation">
             <li class="active"><a href="#options" data-toggle="tab">Options</a></li>
             <li><a href="#inline-options" data-toggle="tab">Inline Options</a></li>
+            <li><a href="#methods" data-toggle="tab">Methods</a></li>
           </ul>
 
           <div class="tab-content">
@@ -397,6 +408,35 @@ $().ready(function(){
                   </td>
                   <td>
                     <p>Choose between one of the four colors options.</p>
+                  </td>
+                </tr>
+              </table>
+
+            </div>
+            <div class="tab-pane" id="methods">
+
+              <p><em>The plugin returns an array of Plugin instances. Once you found the object you're looking for, simply call one of theses puppies. Check main.js, which I used to build the examples you see in here for more details.</em></p>
+
+              <table class="table table-striped">
+                <tr>
+                  <td>Name</td>
+                  <td>Description</td>
+                </tr>
+                <tr>
+                  <td class="param-name">
+                    <strong>.enableInput()</strong>
+                  </td>
+                  
+                  <td>
+                    <p>Um... well... it enables the input.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="param-name">
+                    <strong>.disableInput()</strong>
+                  </td>
+                  <td>
+                    <p>If you can't figure this one out, I'm not sure you should be even reading this.</p>
                   </td>
                 </tr>
               </table>

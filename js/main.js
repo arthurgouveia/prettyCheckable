@@ -1,8 +1,10 @@
 $().ready(function(){
 
-  $('input.prettyCheckable').prettyCheckable({
+  var inputs = $('input.prettyCheckable:not(#TestDisabled)').prettyCheckable({
     labelPosition: 'right'
   });
+
+  var specificInput = $('#TestDisabled').prettyCheckable();
 
   $('input[name=colors]').on('change', function(){
 
@@ -13,6 +15,20 @@ $().ready(function(){
     } else {
 
       $('div#other-colors').slideUp();
+
+    }
+
+  });
+
+  $('input[name=disabledTrigger]').on('change', function(){
+
+    if ($(this).val() === 'yes') {
+
+      specificInput[0].enableInput();
+
+    } else {
+
+      specificInput[0].disableInput();
 
     }
 

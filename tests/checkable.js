@@ -72,3 +72,19 @@ describe('triggerChangeEvent', function(){
   });
 
 });
+
+describe('disabledElementsBehavior', function(){
+
+  it('should not trigger any actions if disabled', function(){
+
+    var checkbox = $('#TestDisabled');
+    var checkboxTrigger = checkbox.parent().find('a');
+
+    checkboxTrigger.click();
+
+    expect(checkbox.prop('checked')).toEqual(false);
+    expect(checkboxTrigger.hasClass('checked')).toEqual(false);
+
+  });
+
+});

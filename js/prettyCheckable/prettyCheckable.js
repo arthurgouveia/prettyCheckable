@@ -25,7 +25,14 @@
       this.init();
     }
 
-    function addCheckableEvents(element){
+    function enable(element) {
+
+      element.find('input').prop('disabled', false);
+      element.find('a').css({'opacity': 1});
+
+    }
+
+    function addCheckableEvents(element) {
 
       element.find('a, label').on('touchstart click', function(e){
 
@@ -35,7 +42,13 @@
         var input = clickedParent.find('input');
         var fakeCheckable = clickedParent.find('a');
 
-        if (input.prop('type') == 'radio') {
+        if (input.prop('disabled') === true) {
+          console.log('sdf');
+          return;
+
+        }
+
+        if (input.prop('type') === 'radio') {
 
           $('input[name="' + input.attr('name') + '"]').each(function(index, el){
 
@@ -87,12 +100,15 @@
 
       var color =  el.data('color') !== undefined ? el.data('color') : this.options.color;
 
-      var containerClasses = ['pretty' + classType, labelPosition, customClass, color].join(' ');
+      var disabled = el.prop('disabled') === true ? 'disabled' : '';
+
+      var containerClasses = ['pretty' + classType, labelPosition, customClass, color, disabled].join(' ');
 
       el.wrap('<div class="clearfix ' + containerClasses + '"></div>').parent().html();
 
       var dom = [];
       var isChecked = el.prop('checked') ? 'checked' : '';
+      var isDisabled = el.prop('disabled') ? true : false;
 
       if (labelPosition === 'labelright') {
 
@@ -111,13 +127,32 @@
 
     };
 
+    Plugin.prototype.disableInput = function () {
+
+      var el = $(this.element);
+
+      el.parent().addClass('disabled');
+      el.prop('disabled', true);
+
+    };
+
+    Plugin.prototype.enableInput = function () {
+
+      var el = $(this.element);
+
+      el.parent().removeClass('disabled');
+      el.prop('disabled', false);
+
+    };
+
     $.fn[pluginName] = function ( options ) {
+      var inputs = [];
       this.each(function () {
         if (!$.data(this, 'plugin_' + pluginName)) {
-          $.data(this, 'plugin_' + pluginName, new Plugin( this, options ));
+          inputs.push($.data(this, 'plugin_' + pluginName, new Plugin( this, options )));
         }
       });
-      return this;
+      return inputs;
     };
 
 }(jQuery, window));
