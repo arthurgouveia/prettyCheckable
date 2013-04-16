@@ -55,3 +55,18 @@
   margin: 6px 5px;
   cursor: pointer;
 }
+
+.prettycheckbox.disabled a,
+.prettyradio.disabled a,
+.prettycheckbox.disabled label,
+.prettyradio.disabled label{
+  cursor:not-allowed;
+}
+
+.prettycheckbox.disabled a {
+  background-position: 0 -240px;
+}
+
+.prettyradio.disabled a {
+  background-position: 0 -270px;
+}

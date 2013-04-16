@@ -1,7 +1,6 @@
 #What does it do?
 
-This plugin replaces the default checkboxes and radio inputs for better looking ones. 
-Check the [landing page](http://arthurgouveia.com/prettyCheckable/) for a demo.
+This plugin replaces the default checkboxes and radio inputs for better looking ones.
 
 ##Features:
 
@@ -161,6 +160,34 @@ If you want to apply something to all the inputs but you need a few specific one
       </td>
     </tr>
   </tbody>
+</table>
+
+###Methods
+
+<p><em>The plugin returns an array of Plugin instances. Once you found the object you're looking for, simply call one of theses puppies. Check main.js, which I used to build the examples you see in here for more details.</em></p>
+
+<table class="table table-striped">
+  <tr>
+    <td>Name</td>
+    <td>Description</td>
+  </tr>
+  <tr>
+    <td class="param-name">
+      <strong>.enableInput()</strong>
+    </td>
+    
+    <td>
+      <p>Um... well... it enables the input.</p>
+    </td>
+  </tr>
+  <tr>
+    <td class="param-name">
+      <strong>.disableInput()</strong>
+    </td>
+    <td>
+      <p>If you can't figure this one out, I'm not sure you should be even reading this.</p>
+    </td>
+  </tr>
 </table>
 
 ##Customization
