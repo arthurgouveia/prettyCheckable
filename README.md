@@ -19,7 +19,7 @@ This plugin replaces the default checkboxes and radio inputs for better looking 
 
     <link rel="stylesheet" href="js/prettyCheckable/prettyCheckable.css">
 
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="js/prettyCheckable/prettyCheckable.js"></script>
 
 Write your inputs and add a class for the jQuery selector:
