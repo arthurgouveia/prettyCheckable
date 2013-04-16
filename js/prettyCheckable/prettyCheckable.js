@@ -35,21 +35,23 @@
         var input = clickedParent.find('input');
         var fakeCheckable = clickedParent.find('a');
 
-        if (input.attr('type') == 'radio') {
+        if (input.prop('type') == 'radio') {
 
           $('input[name="' + input.attr('name') + '"]').each(function(index, el){
-            $(el).removeAttr('checked').parent().find('a').removeClass('checked');
+
+            $(el).prop('checked', false).parent().find('a').removeClass('checked');
+
           });
 
         }
 
-        if (input.attr('checked') !== undefined) {
+        if (input.prop('checked')) {
 
-          input.removeAttr('checked').change();
+            input.prop('checked', false).change();
 
         } else {
 
-          input.attr('checked', 'checked').change();
+            input.prop('checked', true).change();
 
         }
 
@@ -88,9 +90,9 @@
       var containerClasses = ['pretty' + classType, labelPosition, customClass, color].join(' ');
 
       el.wrap('<div class="clearfix ' + containerClasses + '"></div>').parent().html();
-      
+
       var dom = [];
-      var isChecked = el.attr('checked') !== undefined ? 'checked' : '';
+      var isChecked = el.prop('checked') ? 'checked' : '';
 
       if (labelPosition === 'labelright') {
 
