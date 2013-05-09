@@ -6,7 +6,7 @@ This plugin replaces the default checkboxes and radio inputs for better looking 
 
 * Compatible with IE7+, Chrome, Firefox, Safari and mobile browsers;
 * Custom design, kindly provided by [Bruno O. Barros](http://ilustrebob.com.br/);
-* Four color options (Twitter bootstrap) + [editable PSD](goodies/prettyCheckable.psd);
+* Four color options (Twitter bootstrap) + [editable PSD](http://arthurgouveia.com/prettyCheckable/goodies/prettyCheckable.psd);
 * Better look & size;
 * Super easy implementation;
 * Selectable with Tab and checkable with keyboard;
