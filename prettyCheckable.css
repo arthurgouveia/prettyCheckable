@@ -34,6 +34,9 @@
 .prettycheckbox.yellow a,
 .prettyradio.yellow a{ background-image: url(prettyCheckable-yellow.png);}
 
+.prettycheckbox.gray a,
+.prettyradio.gray a{ background-image: url(prettyCheckable-gray.png);}
+
 .prettyradio a {background-position: 0 -120px;}
 
 .prettycheckbox a:focus,
