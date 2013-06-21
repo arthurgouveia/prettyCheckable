@@ -10,6 +10,7 @@
     var pluginName = 'prettyCheckable',
       document = window.document,
       defaults = {
+        label: '',
         labelPosition: 'right',
         customClass: '',
         color: 'blue'
@@ -85,7 +86,7 @@
 
       var classType = el.data('type') !== undefined ? el.data('type') : el.attr('type');
 
-      var label = el.data('label') !== undefined ? el.data('label') : '';
+      var label = el.data('label') !== undefined ? el.data('label') : this.options.label;
 
       var labelPosition = el.data('labelposition') !== undefined ? 'label' + el.data('labelposition') : 'label' + this.options.labelPosition;
 
