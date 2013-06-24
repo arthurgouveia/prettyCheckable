@@ -27,7 +27,6 @@
     }
 
     function addCheckableEvents(element) {
-
       element.find('a, label').on('touchstart click', function(e){
 
         e.preventDefault();
@@ -52,15 +51,18 @@
 
         }
 
-        if (input.prop('checked')) {
 
-            input.prop('checked', false).change();
-
+        if (window.ko){
+          ko.utils.triggerEvent(input[0], 'click');
         } else {
-
-            input.prop('checked', true).change();
-
+          input.click();
+          if (input.prop('checked')) {
+              input.prop('checked', false).change();
+          } else {
+              input.prop('checked', true).change();
+          }          
         }
+          
 
         fakeCheckable.toggleClass('checked');
 
