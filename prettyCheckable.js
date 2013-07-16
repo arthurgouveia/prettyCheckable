@@ -27,6 +27,25 @@
     }
 
     function addCheckableEvents(element) {
+      if(window.ko){
+        $(element).on('change', function(e){
+          e.preventDefault();
+
+        if(e.originalEvent == undefined){//only changes from knockout model
+            var clickedParent = $(this).closest('.clearfix');
+            var fakeCheckable = $(clickedParent).find('a');
+            var input = clickedParent.find('input');
+            var isChecked = input.prop('checked');
+
+            if(isChecked){
+              fakeCheckable.addClass('checked');
+            }else{
+              fakeCheckable.removeClass('checked');
+            }
+          }
+        });
+      }
+      
       element.find('a, label').on('touchstart click', function(e){
 
         e.preventDefault();
