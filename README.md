@@ -190,6 +190,21 @@ If you want to apply something to all the inputs but you need a few specific one
   </tr>
 </table>
 
+### Knockout compatibility
+####Html
+     <input type="checkbox" data-bind="checked: isFurnished, prettyCheckable: {color: 'gray', label: '@GetText("Furnished")' }"/>
+
+####Custom binding
+    ko.bindingHandlers.prettyCheckable = {
+        init: function(element, valueAccessor, allBindingsAccessor, viewModel, bindingContext) {
+            var val = ko.utils.unwrapObservable(valueAccessor());
+            $(element).prettyCheckable({color: val.color, label: val.label});
+        },
+        update: function(element, valueAccessor, allBindingsAccessor, viewModel, bindingContext) {
+            $(element).trigger("change");
+        }
+    };
+
 ##Customization
 
 If you want to create your own designed checkboxes or you just need a different color set, download the [prettyCheckable PSD](http://arthurgouveia.com/prettyCheckable/goodies/prettyCheckable.psd), do whatever you need to, add the entries to your CSS and pass the name of your color/style in the color or customClass parameters, according to the CSS code you can see on [prettyCheckable.css](http://arthurgouveia.com/prettyCheckable/js/prettyCheckable/prettyCheckable.css).
