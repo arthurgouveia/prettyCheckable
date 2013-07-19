@@ -191,8 +191,9 @@ If you want to apply something to all the inputs but you need a few specific one
 </table>
 
 ### Knockout compatibility
+
 ####Html
-     <input type="checkbox" data-bind="checked: isFurnished, prettyCheckable: {color: 'gray', label: 'Furnished' }"/>
+    <input type="checkbox" data-bind="checked: isFurnished, prettyCheckable: {color: 'gray', label: 'Furnished' }"/>
 
 ####Custom binding
     ko.bindingHandlers.prettyCheckable = {
