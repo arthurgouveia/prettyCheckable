@@ -27,25 +27,36 @@
     }
 
     function addCheckableEvents(element) {
-      if(window.ko){
-        $(element).on('change', function(e){
+
+      if (window.ko) {
+
+        $(element).on('change', function(e) {
+
           e.preventDefault();
 
-        if(e.originalEvent == undefined){//only changes from knockout model
+          if (e.originalEvent === undefined) {//only changes from knockout model
+
             var clickedParent = $(this).closest('.clearfix');
             var fakeCheckable = $(clickedParent).find('a');
             var input = clickedParent.find('input');
             var isChecked = input.prop('checked');
 
-            if(isChecked){
+            if (isChecked === true) {
+
               fakeCheckable.addClass('checked');
-            }else{
+
+            } else {
+
               fakeCheckable.removeClass('checked');
+
             }
+
           }
+
         });
+
       }
-      
+
       element.find('a, label').on('touchstart click', function(e){
 
         e.preventDefault();
@@ -55,7 +66,7 @@
         var fakeCheckable = clickedParent.find('a');
 
         if (input.prop('disabled') === true) {
-          console.log('sdf');
+
           return;
 
         }
@@ -71,17 +82,26 @@
         }
 
 
-        if (window.ko){
+        if (window.ko) {
+
           ko.utils.triggerEvent(input[0], 'click');
+
         } else {
+
           input.click();
+
           if (input.prop('checked')) {
+
               input.prop('checked', false).change();
+
           } else {
+
               input.prop('checked', true).change();
-          }          
+
+          }
+
         }
-          
+
 
         fakeCheckable.toggleClass('checked');
 
@@ -102,6 +122,8 @@
     Plugin.prototype.init = function () {
 
       var el = $(this.element);
+
+      el.parent().addClass('has-pretty-child');
 
       el.css('display', 'none');
 
