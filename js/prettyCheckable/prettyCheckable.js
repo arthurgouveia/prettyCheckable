@@ -10,6 +10,7 @@
     var pluginName = 'prettyCheckable',
       document = window.document,
       defaults = {
+        label: '',
         labelPosition: 'right',
         customClass: '',
         color: 'blue'
@@ -25,14 +26,36 @@
       this.init();
     }
 
-    function enable(element) {
-
-      element.find('input').prop('disabled', false);
-      element.find('a').css({'opacity': 1});
-
-    }
-
     function addCheckableEvents(element) {
+
+      if (window.ko) {
+
+        $(element).on('change', function(e) {
+
+          e.preventDefault();
+
+          if (e.originalEvent === undefined) {//only changes from knockout model
+
+            var clickedParent = $(this).closest('.clearfix');
+            var fakeCheckable = $(clickedParent).find('a');
+            var input = clickedParent.find('input');
+            var isChecked = input.prop('checked');
+
+            if (isChecked === true) {
+
+              fakeCheckable.addClass('checked');
+
+            } else {
+
+              fakeCheckable.removeClass('checked');
+
+            }
+
+          }
+
+        });
+
+      }
 
       element.find('a, label').on('touchstart click', function(e){
 
@@ -43,7 +66,7 @@
         var fakeCheckable = clickedParent.find('a');
 
         if (input.prop('disabled') === true) {
-          console.log('sdf');
+
           return;
 
         }
@@ -58,15 +81,27 @@
 
         }
 
-        if (input.prop('checked')) {
 
-            input.prop('checked', false).change();
+        if (window.ko) {
+
+          ko.utils.triggerEvent(input[0], 'click');
 
         } else {
 
-            input.prop('checked', true).change();
+          input.click();
+
+          if (input.prop('checked')) {
+
+              input.prop('checked', false).change();
+
+          } else {
+
+              input.prop('checked', true).change();
+
+          }
 
         }
+
 
         fakeCheckable.toggleClass('checked');
 
@@ -88,11 +123,13 @@
 
       var el = $(this.element);
 
+      el.parent().addClass('has-pretty-child');
+
       el.css('display', 'none');
 
       var classType = el.data('type') !== undefined ? el.data('type') : el.attr('type');
 
-      var label = el.data('label') !== undefined ? el.data('label') : '';
+      var label = el.data('label') !== undefined ? el.data('label') : this.options.label;
 
       var labelPosition = el.data('labelposition') !== undefined ? 'label' + el.data('labelposition') : 'label' + this.options.labelPosition;
 
