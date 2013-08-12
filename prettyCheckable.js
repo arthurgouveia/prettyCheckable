@@ -88,8 +88,6 @@
 
         } else {
 
-          input.click();
-
           if (input.prop('checked')) {
 
               input.prop('checked', false).change();
