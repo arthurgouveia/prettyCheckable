@@ -11,7 +11,7 @@
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
-    <link rel="stylesheet" href="js/prettyCheckable/prettyCheckable.css">
+    <link rel="stylesheet" href="js/prettyCheckable/dist/prettyCheckable.css">
 
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -251,7 +251,7 @@
 
           <h3>Install &amp; Setup</h3>
 
-          <p><a href="https://github.com/arthurgouveia/prettyCheckable/zipball/master" target="_blank">Download the files</a> (or <a href="https://github.com/arthurgouveia/prettyCheckable" target="_blank">fork it</a>) and include jQuery and prettyCheckable files:</p>
+          <p><a href="https://github.com/arthurgouveia/prettyCheckable/zipball/master" target="_blank">Download the files</a> (or <a href="https://github.com/arthurgouveia/prettyCheckable" target="_blank">fork it</a>) and include jQuery 1.9+ and prettyCheckable files (make sure you're mapping the sprite correctly on your CSS)</p>
 
           <pre class="prettyprint lang-html">
 &lt;link rel=&quot;stylesheet&quot; href=&quot;js/prettyCheckable/prettyCheckable.css&quot;&gt;
@@ -269,11 +269,9 @@
           <p>Setup prettyCheckable for your inputs and you're all set:</p>
 
           <pre class="prettyprint lang-js">
-$().ready(function(){
-
-  $('input.myClass').prettyCheckable();
-
-});
+for (var i = inputList.length - 1; i >= 0; i--) {
+    $(inputList[i]).prettyCheckable();
+}
 </pre>
 
           <p>You can start the plugin with the options you see on the documentation bellow and they will be applied to all matching inputs:</p>
@@ -295,6 +293,25 @@ $().ready(function(){
 </pre>
 
           <h3>Documentation</h3>
+
+          <h4>CSS only (AKA lame option)</h4>
+
+          <p>You can simply use the images inside /img/sprite and create your own sprite manually. Make sure you update your sprite name, match it to the url inside your CSS and also the states positions for each one of the types and states the checkables can assume.</p>
+
+          <h4>Grunt &amp Compass (Fuck Yeah Method)</h4>
+
+          <p>Sprites are being automagically generated with the help of Compass.<br/>
+          The sizes of all the checkables are assumed to be the same, so that's calculated from your first image size.<br/>
+          The positioning of each sprite is also mapped automatically.</p>
+
+          <ul>
+            <li>Clone this repo;</li>
+            <li>Install Sass &amp; Compass;</li>
+            <li>Run 'npm install';</li>
+            <li>Run 'grunt' to build it or 'grunt w' to watch for changes.</li>
+          </ul>
+
+          <p>ps.: If you're wondering why I set a capital letter in front of each file, that's done because I want Compass to generate the sprite it in a logical order. Found a better way? Pull Request!</p>
 
           <p><em>None of the parameters is mandatory.</em></p>
 
@@ -335,18 +352,6 @@ $().ready(function(){
                   </td>
                   <td>
                     <p>This will add a class you want to the wrapping div surrounding the input, created by the plugin.</p>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="param-name">
-                    <strong>color</strong>
-                  </td>
-                  <td class="param-values">
-                    string<br/>
-                    <em>blue(default), green, yellow or red</em>
-                  </td>
-                  <td>
-                    <p>Choose between one of the four colors options.</p>
                   </td>
                 </tr>
               </table>
@@ -398,25 +403,16 @@ $().ready(function(){
                     <p>This will add a class you want to the wrapping div surrounding the input, created by the plugin.</p>
                   </td>
                 </tr>
-                <tr>
-                  <td class="param-name">
-                    <strong>data-color</strong>
-                  </td>
-                  <td class="param-values">
-                    string<br/>
-                    <em>blue(default), green, yellow or red</em>
-                  </td>
-                  <td>
-                    <p>Choose between one of the four colors options.</p>
-                  </td>
-                </tr>
               </table>
 
             </div>
             <div class="tab-pane" id="methods">
 
-              <p><em>The plugin returns an array of Plugin instances. Once you found the object you're looking for, simply call one of theses puppies. Check main.js, which I used to build the examples you see in here for more details.</em></p>
+              <p><em>Using prettyCheckable is already pretty darn easy, right? What if I told you using it's methods is easy peasy lemon squeezy? Just use</em></p>
 
+              <pre>
+$('#myInput').prettyCheckable('check');
+</pre>
               <table class="table table-striped">
                 <tr>
                   <td>Name</td>
@@ -424,19 +420,27 @@ $().ready(function(){
                 </tr>
                 <tr>
                   <td class="param-name">
-                    <strong>.enableInput()</strong>
+                    <strong>enable OR disable</strong>
                   </td>
                   
                   <td>
-                    <p>Um... well... it enables the input.</p>
+                    <p>Um... well... it enables/disables the input.</p>
                   </td>
                 </tr>
                 <tr>
                   <td class="param-name">
-                    <strong>.disableInput()</strong>
+                    <strong>check OR uncheck</strong>
                   </td>
                   <td>
-                    <p>If you can't figure this one out, I'm not sure you should be even reading this.</p>
+                    <p>Um... well... it checks/unchecks the input.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="param-name">
+                    <strong>destroy</strong>
+                  </td>
+                  <td>
+                    <p>Gives you your ugly input back, destroying the DOM wrapped around it.</p>
                   </td>
                 </tr>
               </table>
@@ -451,8 +455,6 @@ $().ready(function(){
         </div>
 
       </div>
-
-      
 
       <hr>
 
