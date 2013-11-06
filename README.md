@@ -15,7 +15,7 @@ This plugin replaces the default checkboxes and radio inputs for better looking 
 
 ##Install & Setup
 
-[Download the files](https://github.com/arthurgouveia/prettyCheckable/zipball/master) (or [fork it](https://github.com/arthurgouveia/prettyCheckable)) and include jQuery and prettyCheckable files:
+[Download the files](https://github.com/arthurgouveia/prettyCheckable/zipball/master) (or [fork it](https://github.com/arthurgouveia/prettyCheckable)) and include jQuery 1.9+ and prettyCheckable files (make sure you're mapping the sprite correctly on your CSS):
 
     <link rel="stylesheet" href="js/prettyCheckable/prettyCheckable.css">
 
@@ -26,22 +26,20 @@ Write your inputs and add a class for the jQuery selector:
 
     <input type="checkbox" class="myClass" value="yes" id="answer" name="answer"/>
 
-Setup prettyCheckable for your inputs and you're all set:
+Setup prettyCheckable for your input and you're all set:
 
-    $().ready(function(){
+    $('.myClass').prettyCheckable();
 
-      $('input.myClass').prettyCheckable();
+If you have several inputs, make a loop and call the plugin on each one:
 
-    });
+    for (var i = inputList.length - 1; i >= 0; i--) {
+        $(inputList[i]).prettyCheckable();
+    }
 
 You can start the plugin with the options you see on the documentation bellow and they will be applied to all matching inputs:
 
-    $().ready(function(){
-
-      $('input.myClass').prettyCheckable({
-        color: 'red'
-      });
-
+    $('.myClass').prettyCheckable({
+      color: 'red'
     });
 
 If you want to apply something to all the inputs but you need a few specific ones to be different, you can add the specifics inline:
@@ -51,6 +49,25 @@ If you want to apply something to all the inputs but you need a few specific one
 ##Documentation
 
 *None of the parameters is mandatory.*
+
+###Customizing
+
+####CSS only (AKA lame option)
+
+You can simply use the images inside /img/sprite and create your own sprite manually. Make sure you update your sprite name, match it to the url inside your CSS and also the states positions for each one of the types and states the checkables can assume.
+
+####Grunt & Compass (Fuck Yeah Method)
+
+Sprites are being automagically generated with the help of Compass. 
+The sizes of all the checkables are assumed to be the same, so that's calculated from your first image size.
+The positioning of each sprite is also mapped automatically.
+
+- Clone this repo;
+- Install Sass &amp; Compass;
+- Run 'npm install';
+- Run 'grunt' to build it or 'grunt w' to watch for changes.
+
+ps.: If you're wondering why I set a capital letter in front of each file, that's done because I want Compass to generate the sprite it in a logical order. Found a better way? Pull Request!
 
 ###Options
 
@@ -83,18 +100,6 @@ If you want to apply something to all the inputs but you need a few specific one
       </td>
       <td>
         <p>This will add a class you want to the wrapping div surrounding the input, created by the plugin.</p>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <strong>color</strong>
-      </td>
-      <td>
-        string<br>
-        <em>blue(default), green, yellow or red</em>
-      </td>
-      <td>
-        <p>Choose between one of the four colors options.</p>
       </td>
     </tr>
   </tbody>
@@ -147,24 +152,14 @@ If you want to apply something to all the inputs but you need a few specific one
         <p>This will add a class you want to the wrapping div surrounding the input, created by the plugin.</p>
       </td>
     </tr>
-    <tr>
-      <td>
-        <strong>data-color</strong>
-      </td>
-      <td>
-        string<br>
-        <em>blue(default), green, yellow or red</em>
-      </td>
-      <td>
-        <p>Choose between one of the four colors options.</p>
-      </td>
-    </tr>
   </tbody>
 </table>
 
 ###Methods
 
-<p><em>The plugin returns an array of Plugin instances. Once you found the object you're looking for, simply call one of theses puppies. Check main.js, which I used to build the examples you see in here for more details.</em></p>
+<p><em>Using prettyCheckable is already pretty darn easy, right? What if I told you using it's methods is easy peasy lemon squeezy? Just use</em></p>
+
+    $('#myInput').prettyCheckable('check');
 
 <table class="table table-striped">
   <tr>
@@ -173,19 +168,27 @@ If you want to apply something to all the inputs but you need a few specific one
   </tr>
   <tr>
     <td class="param-name">
-      <strong>.enableInput()</strong>
+      <strong>enable OR disable</strong>
     </td>
     
     <td>
-      <p>Um... well... it enables the input.</p>
+      <p>Um... well... it enables/disables the input.</p>
     </td>
   </tr>
   <tr>
     <td class="param-name">
-      <strong>.disableInput()</strong>
+      <strong>check OR uncheck</strong>
     </td>
     <td>
-      <p>If you can't figure this one out, I'm not sure you should be even reading this.</p>
+      <p>Um... well... it checks/unchecks the input.</p>
+    </td>
+  </tr>
+  <tr>
+    <td class="param-name">
+      <strong>destroy</strong>
+    </td>
+    <td>
+      <p>Gives you your ugly input back, destroying the DOM wrapped around it.</p>
     </td>
   </tr>
 </table>
@@ -199,7 +202,7 @@ If you want to apply something to all the inputs but you need a few specific one
     ko.bindingHandlers.prettyCheckable = {
         init: function(element, valueAccessor, allBindingsAccessor, viewModel, bindingContext) {
             var val = ko.utils.unwrapObservable(valueAccessor());
-            $(element).prettyCheckable({color: val.color, label: val.label});
+            $(element).prettyCheckable({ label: val.label });
         },
         update: function(element, valueAccessor, allBindingsAccessor, viewModel, bindingContext) {
             $(element).trigger("change");
