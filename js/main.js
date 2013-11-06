@@ -1,60 +1,63 @@
-$().ready(function(){
+(function (window, document, $) {
+    'use strict';
 
-  var inputs = $('input.prettyCheckable:not(#TestDisabled)').prettyCheckable({
-    labelPosition: 'right'
-  });
+    var inputs = $('input.prettyCheckable:not(#TestDisabled)').each(function() {
+        $(this).prettyCheckable({
+            labelPosition: 'right'
+        });
+    });
 
-  var specificInput = $('#TestDisabled').prettyCheckable();
+    var specificInput = $('#TestDisabled').prettyCheckable();
 
-  $('input[name=colors]').on('change', function(){
+    $('input[name=colors]').on('change', function(){
 
-    if ($(this).val() === 'yes') {
+        if ($(this).val() === 'yes') {
 
-      $('div#other-colors').slideDown();
+            $('div#other-colors').slideDown();
 
-    } else {
+        } else {
 
-      $('div#other-colors').slideUp();
+            $('div#other-colors').slideUp();
 
+        }
+
+    });
+
+    $('input[name=disabledTrigger]').on('change', function(){
+
+        if ($(this).val() === 'yes') {
+
+            $('#TestDisabled').prettyCheckable('enable');
+
+        } else {
+
+            $('#TestDisabled').prettyCheckable('disable');
+
+        }
+
+    });
+
+    var jasmineEnv = jasmine.getEnv();
+    jasmineEnv.updateInterval = 250;
+
+    var htmlReporter = new jasmine.HtmlReporter();
+    jasmineEnv.addReporter(htmlReporter);
+
+    jasmineEnv.specFilter = function(spec) {
+        return htmlReporter.specFilter(spec);
+    };
+
+    function execJasmine() {
+        jasmineEnv.execute();
     }
 
-  });
+    //preparing inputs for the Jasmine tests
+    $('#jasmine').on('show', function(){
+        $('input#Test1, input#Test2').removeAttr('checked').parent().find('a').removeClass('checked');
+    });
 
-  $('input[name=disabledTrigger]').on('change', function(){
+    $('#jasmine').on('shown', function(){
+        execJasmine();
+    });
 
-    if ($(this).val() === 'yes') {
-
-      specificInput[0].enableInput();
-
-    } else {
-
-      specificInput[0].disableInput();
-
-    }
-
-  });
-
-  var jasmineEnv = jasmine.getEnv();
-  jasmineEnv.updateInterval = 250;
-
-  var htmlReporter = new jasmine.HtmlReporter();
-  jasmineEnv.addReporter(htmlReporter);
-
-  jasmineEnv.specFilter = function(spec) {
-    return htmlReporter.specFilter(spec);
-  };
-
-  function execJasmine() {
-    jasmineEnv.execute();
-  }
-
-  //preparing inputs for the Jasmine tests
-  $('div#jasmine').on('show', function(){
-    $('input#Test1, input#Test2').removeAttr('checked').parent().find('a').removeClass('checked');
-  });
-
-  $('div#jasmine').on('shown', function(){
-    execJasmine();
-  });
-
-});
+})(window, document, jQuery);

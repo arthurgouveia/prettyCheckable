@@ -56,17 +56,17 @@
   cursor: pointer;
 }
 
-.prettycheckbox.disabled a,
-.prettyradio.disabled a,
-.prettycheckbox.disabled label,
-.prettyradio.disabled label{
+.prettycheckbox a.disabled,
+.prettyradio a.disabled,
+.prettycheckbox label.disabled,
+.prettyradio label.disabled{
   cursor:not-allowed;
 }
 
-.prettycheckbox.disabled a {
+.prettycheckbox a.checked.disabled {
   background-position: 0 -240px;
 }
 
-.prettyradio.disabled a {
+.prettyradio a.checked.disabled {
   background-position: 0 -270px;
 }
