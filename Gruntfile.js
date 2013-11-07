@@ -26,7 +26,7 @@ module.exports = function (grunt) {
           sassDir : 'dev',
           cssDir : 'dist',
           imagesDir : 'img',
-          relativeAssets: false,
+          relativeAssets: true,
           environment: 'production'
         }
       }
