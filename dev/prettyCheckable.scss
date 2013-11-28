@@ -17,7 +17,7 @@ $sprite: sprite-map("sprites/*.png", $layout: "horizontal");
     padding: 0;
     margin: 0;
 
-    a {
+    > a {
         @include sprite-dimensions($sprite, 'A-checkbox');
         display: block;
         float: left;
@@ -46,7 +46,7 @@ $sprite: sprite-map("sprites/*.png", $layout: "horizontal");
 }
 
 .prettycheckbox {
-    a {
+    > a {
         background-position: sprite-position($sprite, 'A-checkbox');
 
         &:focus {
@@ -72,7 +72,7 @@ $sprite: sprite-map("sprites/*.png", $layout: "horizontal");
 }
 
 .prettyradio {
-    a {
+    > a {
         background-position: sprite-position($sprite, 'G-radio');
 
         &:focus {
