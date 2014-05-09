@@ -25,10 +25,11 @@
 
                 e.preventDefault();
 
-                if (e.originalEvent === undefined) { //only changes from knockout model
+                //only changes from knockout model
+                if (e.originalEvent === undefined) {
 
                     var clickedParent = $(this).closest('.clearfix'),
-                        fakeCheckable = $(clickedParent).find('a'),
+                        fakeCheckable = $(clickedParent).find('a:first'),
                         isChecked = fakeCheckable.hasClass('checked');
 
                     if (isChecked === true) {
@@ -47,13 +48,13 @@
 
         }
 
-        element.find('a, label').on('touchstart click', function(e){
+        element.find('a:first, label').on('touchstart click', function(e){
 
             e.preventDefault();
 
             var clickedParent = $(this).closest('.clearfix'),
                 input = clickedParent.find('input'),
-                fakeCheckable = clickedParent.find('a');
+                fakeCheckable = clickedParent.find('a:first');
 
             if (fakeCheckable.hasClass('disabled') === true) {
 
@@ -65,7 +66,7 @@
 
                 $('input[name="' + input.attr('name') + '"]').each(function(index, el){
 
-                    $(el).prop('checked', false).parent().find('a').removeClass('checked');
+                    $(el).prop('checked', false).parent().find('a:first').removeClass('checked');
 
                 });
 
@@ -93,7 +94,7 @@
 
         });
 
-        element.find('a').on('keyup', function(e){
+        element.find('a:first').on('keyup', function(e){
 
             if (e.keyCode === 32) {
 
@@ -183,25 +184,35 @@
 
         check: function () {
 
-            $(this.element).prop('checked', true).attr('checked', true).parent().find('a').addClass('checked');
+            if ($(this.element).prop('type') === 'radio') {
+
+                $('input[name="' + input.attr('name') + '"]').each(function(index, el){
+
+                    $(el).prop('checked', false).attr('checked', false).parent().find('a:first').removeClass('checked');
+
+                });
+
+            }
+
+            $(this.element).prop('checked', true).attr('checked', true).parent().find('a:first').addClass('checked');
 
         },
 
         uncheck: function () {
 
-            $(this.element).prop('checked', false).attr('checked', false).parent().find('a').removeClass('checked');
+            $(this.element).prop('checked', false).attr('checked', false).parent().find('a:first').removeClass('checked');
 
         },
 
         enable: function () {
 
-            $(this.element).removeAttr('disabled').parent().find('a').removeClass('disabled');
+            $(this.element).removeAttr('disabled').parent().find('a:first').removeClass('disabled');
 
         },
 
         disable: function () {
 
-            $(this.element).attr('disabled', 'disabled').parent().find('a').addClass('disabled');
+            $(this.element).attr('disabled', 'disabled').parent().find('a:first').addClass('disabled');
 
         },
 
