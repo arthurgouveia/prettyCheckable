@@ -184,6 +184,16 @@
 
         check: function () {
 
+            if ($(this.element).prop('type') === 'radio') {
+
+                $('input[name="' + input.attr('name') + '"]').each(function(index, el){
+
+                    $(el).prop('checked', false).attr('checked', false).parent().find('a:first').removeClass('checked');
+
+                });
+
+            }
+
             $(this.element).prop('checked', true).attr('checked', true).parent().find('a:first').addClass('checked');
 
         },
