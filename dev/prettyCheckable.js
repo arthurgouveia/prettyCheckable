@@ -186,7 +186,7 @@
 
             if ($(this.element).prop('type') === 'radio') {
 
-                $('input[name="' + input.attr('name') + '"]').each(function(index, el){
+                $('input[name="' + $(this.element).attr('name') + '"]').each(function(index, el){
 
                     $(el).prop('checked', false).attr('checked', false).parent().find('a:first').removeClass('checked');
 
