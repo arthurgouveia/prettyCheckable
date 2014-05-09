@@ -48,7 +48,7 @@
             <li><a href="#jasmine" data-toggle="modal">Jasmine tests</a></li>
             <li><a href="#thanks" data-toggle="modal">Special thanks</a></li>
           </ul>
-          
+
         </div>
       </div>
     </div>
@@ -77,15 +77,15 @@
           </p>
 
           <div class="row-fluid">
-            
+
             <div class="span6">
-              
+
               <h3>Share</h3>
 
               <p>
                 <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://arthurgouveia.com/prettyCheckable" data-lang="en" data-via="ArthurGouveia" data-text="Nice jQuery plugin to customize the look&feel of checkboxes and radios: prettyCheckable">Tweet</a>
                 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-              
+
                 <a href="https://twitter.com/ArthurGouveia" class="twitter-follow-button" data-show-count="false" data-lang="en">Follow @ArthurGouveia</a>
                 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
               </p>
@@ -129,7 +129,7 @@
                   <strong>Bruno O. Barros</strong> - <a href="http://twitter.com/IlustreBOB" target="_blank">@IlustreBOB</a><br/>
                   Kindly helped me by designing these awesome checkables.
                 </div>
-                
+
 
               </div>
 
@@ -176,7 +176,7 @@
               <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
             </div>
           </div>
-          
+
         </div>
 
         <div class="span4">
@@ -186,7 +186,8 @@
           <form class="well">
 
             <div class="input-wrapper">
-              <input type="checkbox" class="prettyCheckable" value="1" id="Test1" name="Test1" data-label="Right positioned label (no param)" checked/>
+              <label for="Test1">Right positioned label (no params)</label>
+              <input type="checkbox" class="prettyCheckable" value="1" id="Test1" name="Test1" checked/>
             </div>
 
             <div class="input-wrapper">
@@ -218,7 +219,7 @@
             <div id="other-colors" class="hide">
 
               <div class="input-wrapper">
-                
+
                 <div class="input-wrapper">
                   <input type="checkbox" class="prettyCheckable" value="1" id="color1" checked name="color1" data-label="Default (no-param)" />
                 </div>
@@ -256,7 +257,7 @@
           <pre class="prettyprint lang-html">
 &lt;link rel=&quot;stylesheet&quot; href=&quot;js/prettyCheckable/prettyCheckable.css&quot;&gt;
 
-&lt;script src=&quot;//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js&quot;&gt;&lt;/script&gt;
 &lt;script src=&quot;js/prettyCheckable/prettyCheckable.js&quot;&gt;&lt;/script&gt;
 </pre>
 
@@ -298,7 +299,7 @@ $().ready(function(){
 
           <p>You can simply use the images inside /img/sprite and create your own sprite manually. Make sure you update your sprite name, match it to the url inside your CSS and also the states positions for each one of the types and states the checkables can assume.</p>
 
-          <h4>Grunt &amp Compass (Fuck Yeah Method)</h4>
+          <h4>Grunt &amp; Compass (Fuck Yeah Method)</h4>
 
           <p>Sprites are being automagically generated with the help of Compass.<br/>
           The sizes of all the checkables are assumed to be the same, so that's calculated from your first image size.<br/>
@@ -329,6 +330,18 @@ $().ready(function(){
                   <td class="param-name">Name</td>
                   <td class="param-values">Values</td>
                   <td>Description</td>
+                </tr>
+                <tr>
+                  <td class="param-name">
+                    <strong>label</strong>
+                  </td>
+                  <td class="param-values">
+                    string<br/>
+                    <em>The value for your label</em>
+                  </td>
+                  <td>
+                    <p>If informed, this will overwrite the auto-detected label (if exists) but is overwriten by the inline-option "data-label"</p>
+                  </td>
                 </tr>
                 <tr>
                   <td class="param-name">
@@ -422,7 +435,7 @@ $('#myInput').prettyCheckable('check');
                   <td class="param-name">
                     <strong>enable OR disable</strong>
                   </td>
-                  
+
                   <td>
                     <p>Um... well... it enables/disables the input.</p>
                   </td>
@@ -440,7 +453,7 @@ $('#myInput').prettyCheckable('check');
                     <strong>destroy</strong>
                   </td>
                   <td>
-                    <p>Gives you your ugly input back, destroying the DOM wrapped around it.</p>
+                    <p>Gives you your ugly input back, destroying the DOM wrapped around it and creating a label (if there was one present) right before it.</p>
                   </td>
                 </tr>
               </table>
@@ -471,13 +484,12 @@ $('#myInput').prettyCheckable('check');
 
     </div>
 
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="js/prettyCheckable/jquery-1.9.1.min.js"><\/script>')</script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 
     <script src="js/bootstrap-transition.js"></script>
     <script src="js/bootstrap-modal.js"></script>
     <script src="js/bootstrap-tab.js"></script>
-    <script src="js/prettyCheckable/dist/prettyCheckable.min.js"></script>
+    <script src="js/prettyCheckable/dev/prettyCheckable.js"></script>
     <script src="js/main.js"></script>
 
     <script type="text/javascript">

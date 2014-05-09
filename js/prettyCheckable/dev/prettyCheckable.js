@@ -124,7 +124,30 @@
 
             var classType = el.data('type') !== undefined ? el.data('type') : el.attr('type');
 
-            var label = el.data('label') !== undefined ? el.data('label') : this.options.label;
+            var label = null,
+                elLabelId = el.attr('id');
+
+            if (elLabelId !== undefined) {
+
+                var elLabel = $('label[for=' + elLabelId + ']');
+
+                if (elLabel.length > 0) {
+
+                    label = elLabel.text();
+
+                    elLabel.remove();
+
+                }
+
+            }
+
+            if (this.options.label === '') {
+
+                this.options.label = label;
+
+            }
+
+            label = el.data('label') !== undefined ? el.data('label') : this.options.label;
 
             var labelPosition = el.data('labelposition') !== undefined ? 'label' + el.data('labelposition') : 'label' + this.options.labelPosition;
 
@@ -185,9 +208,24 @@
         destroy: function () {
 
             var el = $(this.element),
-                clonedEl = el.clone();
+                clonedEl = el.clone(),
+                label = null,
+                elLabelId = el.attr('id');
 
-            clonedEl.removeAttr('style').insertBefore(el.parent());
+            if (elLabelId !== undefined) {
+
+                var elLabel = $('label[for=' + elLabelId + ']');
+
+                if (elLabel.length > 0) {
+
+                    elLabel.insertBefore(el.parent());
+
+                }
+
+            }
+
+            clonedEl.removeAttr('style').insertAfter(elLabel);
+
             el.parent().remove();
 
         }
