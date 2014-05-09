@@ -58,7 +58,7 @@ You can simply use the images inside /img/sprite and create your own sprite manu
 
 ####Grunt & Compass (Fuck Yeah Method)
 
-Sprites are being automagically generated with the help of Compass. 
+Sprites are being automagically generated with the help of Compass.
 The sizes of all the checkables are assumed to be the same, so that's calculated from your first image size.
 The positioning of each sprite is also mapped automatically.
 
@@ -77,6 +77,18 @@ ps.: If you're wondering why I set a capital letter in front of each file, that'
       <td>Name</td>
       <td>Values</td>
       <td>Description</td>
+    </tr>
+    <tr>
+      <td>
+        <strong>label</strong>
+      </td>
+      <td>
+        string<br/>
+        <em>The value for your label</em>
+      </td>
+      <td>
+        <p>If informed, this will overwrite the auto-detected label (if exists) but is overwriten by the inline-option "data-label"</p>
+      </td>
     </tr>
     <tr>
       <td>
@@ -170,7 +182,7 @@ ps.: If you're wondering why I set a capital letter in front of each file, that'
     <td class="param-name">
       <strong>enable OR disable</strong>
     </td>
-    
+
     <td>
       <p>Um... well... it enables/disables the input.</p>
     </td>
@@ -188,7 +200,7 @@ ps.: If you're wondering why I set a capital letter in front of each file, that'
       <strong>destroy</strong>
     </td>
     <td>
-      <p>Gives you your ugly input back, destroying the DOM wrapped around it.</p>
+      <p>Gives you your ugly input back, destroying the DOM wrapped around it and creating a label (if there was one present) right before it.</p>
     </td>
   </tr>
 </table>
